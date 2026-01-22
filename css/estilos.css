@@ -2,36 +2,39 @@
              Videojuegos y Anime Sekhmet 
 ========================================================= */
 
-/* ===== 1) RESET Y VARIABLES (Igual para todos) ===== */
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; min-height: 100vh; }
-img { max-width: 100%; height: auto; display: block; }
+/* ===== 1) CONFIGURACIÓN BASE Y VARIABLES ===== */
+
+* { box-sizing: border-box; } /* Asegura que el tamaño de las cajas incluya bordes y rellenos */
+html, body { margin: 0; padding: 0; min-height: 100vh; } /* Elimina espacios por defecto y cubre toda la altura */
+img { max-width: 100%; height: auto; display: block; } /* Hace las imágenes responsivas y elimina espacios extra abajo */
 
 :root {
-    --bg: #0B1220;
-    --layer: #0F172A;
-    --card: #111827;
-    --border: #2B3753;
-    --fg: #B6C0DD;     
-    --muted: #8E99B5;  
-    --acc: #6D5B97;    
-    --acc2: #4A90E2;   
+    /* Paleta de colores para sensibilidad visual */
+    --bg: #0B1220;     /* Fondo base */
+    --layer: #0F172A;  /* Fondo de header y sidebar */
+    --card: #111827;   /* Fondo de tarjetas */
+    --border: #2B3753; /* Color de bordes */
+    --fg: #B6C0DD;     /* Texto principal (gris suave) */
+    --muted: #8E99B5;  /* Texto secundario */
+    --acc: #6D5B97;    /* Acento morado */
+    --acc2: #4A90E2;   /* Acento azul */
 }
 
 body {
     background-color: var(--bg);
     background-image: linear-gradient(0deg, #030712B3, #030712B3),
-                      linear-gradient(45deg, #1E1B4B 0%, #0F172A 100%);
-    background-attachment: fixed;
+                      linear-gradient(45deg, #1E1B4B 0%, #0F172A 100%); /* Degradado oscuro */
+    background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
     color: var(--fg);
     font-family: system-ui, sans-serif;
     line-height: 1.6;
 }
 
-/* ===== 2) DISEÑO PARA CELL) ===== */
+/* ===== 2) DISEÑO PARA MÓVIL (Por defecto) ===== */
+
 .layout {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Apila contenido verticalmente */
 }
 
 .header, .sidebar {
@@ -43,12 +46,12 @@ body {
 
 .main, .content {
     padding: 1.5rem 1rem;
-    text-align: center;
+    text-align: center; /* Centra el texto en pantallas pequeñas */
 }
 
 .cards {
     display: grid;
-    grid-template-columns: 1fr; /* Una sola columna en celular */
+    grid-template-columns: 1fr; /* Una columna de tarjetas */
     gap: 1.5rem;
 }
 
@@ -58,32 +61,33 @@ body {
     border-radius: 1rem;
 }
 
-/* ===== 3) DISEÑO PARA TABLETS (min-width: 768px) ===== */
+/* ===== 3) DISEÑO PARA TABLETS (Desde 768px) ===== */
+
 @media (min-width: 768px) {
     .section__title { font-size: 2rem; }
 
-    /* En tablets, las cards se ponen de a 2 */
     .cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); /* Dos columnas de tarjetas */
     }
 
     .category-grid {
         display: flex;
-        justify-content: center;
+        justify-content: center; /* Centra las cajas de categorías */
         gap: 2rem;
     }
 }
 
-/* ===== 4) DISEÑO PARA COMPUTADORES (min-width: 1024px) ===== */
+/* ===== 4) DISEÑO PARA PC (Desde 1024px) ===== */
+
 @media (min-width: 1024px) {
     .layout {
-        flex-direction: row;
+        flex-direction: row; /* Coloca el menú al lado del contenido */
     }
 
     .sidebar {
         width: 280px;
         height: 100vh;
-        position: sticky;
+        position: sticky; /* Fija el menú lateral al hacer scroll */
         top: 0;
         border-right: 1px solid var(--border);
         border-bottom: none;
@@ -91,44 +95,50 @@ body {
     }
 
     .content {
-        flex: 1;
+        flex: 1; /* Ocupa el espacio restante a la derecha del menú */
         padding: 3rem;
-        text-align: left; /* Contenido alineado a la izquierda en PC */
+        text-align: left;
     }
 
-    /* En PC, las cards se ponen de a 3 o más */
     .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas de tarjetas */
     }
 }
 
-/* ===== 5) ESTILOS DE COMPONENTES (Compartidos) ===== */
+/* ===== 5) ESTILOS DE COMPONENTES ===== */
+
 .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 1rem;
     padding: 1.2rem;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease; /* Suaviza el efecto de movimiento */
 }
 
 .card__img {
     width: 100%;
-    height: 180px; /* Tamaño uniforme inicial */
-    object-fit: cover;
+    height: 180px; /* Tamaño fijo para orden visual inicial */
+    object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
     border-radius: 0.6rem;
     transition: all 0.4s ease;
 }
 
-/* Efecto al abrir */
+/* Cambios cuando la tarjeta está abierta vía JavaScript */
 .card.open .card__img {
-    height: auto;
+    height: auto; /* Muestra el alto real de la imagen */
     max-height: 500px;
-    object-fit: contain;
+    object-fit: contain; /* Muestra la imagen completa sin recortes */
     background: #000;
 }
 
-.card-info { display: none; margin-top: 1rem; }
-.card.open .card-info { display: block; }
+.card-info { 
+    display: none; /* Oculta la información por defecto */
+    margin-top: 1rem; 
+}
+
+.card.open .card-info { 
+    display: block; /* Muestra la información al abrir */
+}
 
 .footer {
     text-align: center;
@@ -137,5 +147,11 @@ body {
     background: var(--layer);
 }
 
-a { color: #5CB6E5; text-decoration: none; }
-a:hover { color: #D4AF37; }
+a { 
+    color: #5CB6E5; /* Color azul suave para enlaces */
+    text-decoration: none; 
+}
+
+a:hover { 
+    color: #D4AF37; /* Cambia a dorado mate al pasar el cursor */
+}
