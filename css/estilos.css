@@ -3,18 +3,17 @@
 ========================================================= */
 
 /* ===== 1) CONFIGURACIÓN BASE Y VARIABLES ===== */
-
-* { box-sizing: border-box; } /* Evita que el padding y bordes ensanchen las cajas (mantiene el control del tamaño) */
-html, body { margin: 0; padding: 0; min-height: 100vh; } /* Asegura que el diseño ocupe todo el alto de la pantalla */
-img { max-width: 100%; height: auto; display: block; } /* Regla de oro: las imágenes nunca se salen de su contenedor */
+* { box-sizing: border-box; } /* Mantiene el control del tamaño de las cajas incluyendo el padding */
+html, body { margin: 0; padding: 0; min-height: 100vh; } 
+img { max-width: 100%; height: auto; display: block; } /* Regla de oro responsiva: la imagen no desborda su contenedor */
 
 :root {
-    /* Variables de color: seleccionadas para evitar la fatiga visual */
+    /* Variables de color: seleccionadas para el descanso visual (fotofobia) */
     --bg: #0B1220;     
     --layer: #0F172A;  
     --card: #111827;   
     --border: #2B3753; 
-    --fg: #B6C0DD;     /* Texto gris azulado (más suave que el blanco puro) */
+    --fg: #B6C0DD;     /* Gris azulado suave en lugar de blanco brillante */
     --muted: #8E99B5;  
     --acc: #8B5CF6;    /* Morado para el degradado */
     --acc2: #4A90E2;   /* Azul para el degradado */
@@ -22,11 +21,11 @@ img { max-width: 100%; height: auto; display: block; } /* Regla de oro: las imá
 
 body {
     background-color: var(--bg);
-    /* Recuperamos el degradado morado-azul con una capa oscura encima para proteger tu vista */
+    /* Recuperamos el degradado morado a azul con capa oscura protectora */
     background-image: 
         linear-gradient(0deg, rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.7)),
         linear-gradient(45deg, var(--acc) 0%, var(--acc2) 100%); 
-    background-attachment: fixed; /* El fondo se queda quieto mientras el contenido se mueve */
+    background-attachment: fixed; /* El fondo no se mueve, lo que reduce el ruido visual al hacer scroll */
     background-size: cover;
     color: var(--fg);
     font-family: system-ui, sans-serif;
@@ -35,10 +34,7 @@ body {
 
 /* ===== 2) DISEÑO PARA CELULAR (Mobile First) ===== */
 
-.layout {
-    display: flex;
-    flex-direction: column; /* Apila menú y contenido uno arriba del otro */
-}
+.layout { display: flex; flex-direction: column; } /* Todo se apila verticalmente en celulares */
 
 .header, .sidebar {
     padding: 1.5rem 1rem;
@@ -47,83 +43,61 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
-.nav__list {
-    list-style: none; /* Elimina los puntos de la lista que se veían en tu captura */
-    padding: 0;
-    margin-top: 1rem;
-}
+.nav__list { list-style: none; padding: 0; margin-top: 1rem; }
 
-.main, .content {
-    padding: 1.5rem 1rem;
-    text-align: center; 
-}
+.main, .content { padding: 1.5rem 1rem; text-align: center; }
 
 .cards {
-    display: grid;
-    /* CORRECCIÓN: '1fr' asegura que solo haya una caja por fila en celular (más grande y legible) */
-    grid-template-columns: 1fr; 
-    gap: 2.5rem; /* Espacio generoso entre tarjetas para no saturar la vista */
+    display: grid !important;
+    grid-template-columns: 1fr !important; /* FUERZA 1 sola columna: evita que las tarjetas se vean chicas o apretadas */
+    gap: 2rem;
     width: 100%;
-    max-width: 450px; /* Limita el ancho en celulares grandes para que no se estire demasiado */
-    margin: 0 auto;   /* Centra la columna de tarjetas */
+    max-width: 450px; 
+    margin: 0 auto; /* Centra la columna de tarjetas en la pantalla del celular */
 }
 
 .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 1rem;
-    padding: 1.5rem; 
-    width: 100%;     
-    text-align: left; /* Alineación a la izquierda para facilitar la lectura de reseñas largas */
+    padding: 1.5rem;
+    text-align: left; /* Alineación a la izquierda para facilitar la lectura de reseñas */
 }
 
 /* ===== 3) DISEÑO PARA TABLETS (Desde 768px) ===== */
 
-@media (min-width: 768px) {
-    /* Aquí permitimos que las cajas se pongan de a dos */
+@media screen and (min-width: 768px) {
     .cards {
-        grid-template-columns: repeat(2, 1fr); 
-        max-width: 100%; 
+        grid-template-columns: repeat(2, 1fr) !important; /* En tablets permite 2 columnas */
+        max-width: 100%;
     }
-
-    .nav__list {
-        display: flex; /* En tablet el menú se vuelve horizontal */
-        justify-content: center;
-        gap: 1.5rem;
-    }
-
-    .category-grid {
-        display: flex; /* Flexbox para las cajas de Videojuegos/Anime del Inicio */
-        justify-content: center; 
-        gap: 2rem;
-    }
+    .nav__list { display: flex; justify-content: center; gap: 1.5rem; }
 }
 
-/* ===== 4) DISEÑO PARA PC (Desde 1024px) ===== */
+/* ===== 4) DISEÑO PARA PC (Solución al estirado de tarjetas) ===== */
 
-@media (min-width: 1024px) {
-    .layout {
-        flex-direction: row; /* El menú se mueve al lado izquierdo (Sidebar) */
-    }
+@media screen and (min-width: 1024px) {
+    .layout { flex-direction: row; } /* El menú pasa al lado izquierdo */
 
     .sidebar {
-        width: 280px;
+        width: 280px; /* Ancho fijo para que el menú no comprima el contenido */
         height: 100vh;
-        position: sticky; /* El menú te sigue mientras bajas la página */
+        position: sticky;
         top: 0;
         border-right: 1px solid var(--border);
-        border-bottom: none;
         text-align: left;
     }
 
-    .content {
-        flex: 1; /* Toma todo el espacio derecho que deja el sidebar */
-        padding: 3rem;
-        text-align: left;
-    }
+    .content { flex: 1; padding: 3rem; text-align: left; }
 
     .cards {
-        grid-template-columns: repeat(3, 1fr); /* Tres columnas para aprovechar pantallas anchas */
+        display: grid !important;
+        /* LA SOLUCIÓN: auto-fill + minmax. 
+           Crea columnas de al menos 300px. Si no caben 3, pone 2, pero NUNCA las hace flacas. */
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+        gap: 2.5rem;
+        max-width: 1200px; /* Evita que las tarjetas se vuelvan gigantes en monitores muy anchos */
+        margin: 0; 
     }
 }
 
@@ -131,41 +105,35 @@ body {
 
 .card__img {
     width: 100%;
-    height: 220px; /* Altura uniforme para que el catálogo se vea ordenado */
-    object-fit: cover; /* Corta la imagen para llenar el espacio sin estirarla */
+    height: 200px; /* Altura fija inicial para mantener la armonía visual del catálogo */
+    object-fit: cover; /* Recorta la imagen para que rellene el espacio sin deformarse */
     border-radius: 0.6rem;
-    transition: all 0.4s ease; /* Suaviza el cambio de tamaño al hacer clic */
+    transition: all 0.4s ease;
 }
 
-/* Clase activada por JavaScript al hacer clic */
+/* Estado de tarjeta abierta (activado por JS) */
 .card.open .card__img {
-    height: auto; /* Libera la altura fija para mostrar la foto completa */
+    height: auto; 
     max-height: 550px;
-    object-fit: contain; /* Asegura que se vea toda la imagen sin recortes */
-    background: #000; /* Fondo negro para rellenar si la imagen es vertical */
+    object-fit: contain; /* Al abrir, muestra la imagen completa sin recortes */
+    background: #000;
 }
 
 .card-info { 
-    display: none; /* Mantiene la descripción oculta inicialmente */
+    display: none; /* Oculto por defecto para no saturar la pantalla */
     margin-top: 1.2rem; 
 }
 
 .card.open .card-info { 
-    display: block; /* Muestra la info solo cuando la tarjeta está expandida */
+    display: block; /* Solo visible al hacer clic */
 }
 
-.footer {
-    text-align: center;
-    padding: 3rem;
-    border-top: 1px solid var(--border);
-    background: var(--layer);
+.footer { 
+    text-align: center; 
+    padding: 3rem; 
+    background: var(--layer); 
+    border-top: 1px solid var(--border); 
 }
 
-a { 
-    color: #5CB6E5; /* Azul suave para enlaces (no brilla demasiado) */
-    text-decoration: none; 
-}
-
-a:hover { 
-    color: #D4AF37; /* Dorado mate para el toque interactivo */
-}
+a { color: #5CB6E5; text-decoration: none; } /* Color de enlace suave para fotofobia */
+a:hover { color: #D4AF37; } /* Cambio de color sutil para indicar interactividad */
