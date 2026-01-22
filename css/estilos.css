@@ -51,8 +51,20 @@ body {
 
 .cards {
     display: grid;
-    grid-template-columns: 1fr; /* Una columna de tarjetas */
-    gap: 1.5rem;
+    /* 1fr asegura que UNA sola caja ocupe todo el ancho disponible */
+    grid-template-columns: 1fr; 
+    gap: 2rem; /* Aumentamos el espacio entre cajas para que no se vea amontonado */
+    width: 100%;
+    max-width: 500px; /* Evita que la caja sea Gigante en pantallas intermedias */
+    margin: 0 auto;   /* Centra la columna de cajas */
+}
+
+.card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    padding: 1.5rem; /* Más espacio interno para que el texto respire */
+    width: 100%;     /* La caja ocupa todo el ancho del grid */
 }
 
 .hero-img {
