@@ -4,37 +4,40 @@
 
 /* ===== 1) CONFIGURACIÓN BASE Y VARIABLES ===== */
 
-* { box-sizing: border-box; } /* Asegura que el tamaño de las cajas incluya bordes y rellenos */
-html, body { margin: 0; padding: 0; min-height: 100vh; } /* Elimina espacios por defecto y cubre toda la altura */
-img { max-width: 100%; height: auto; display: block; } /* Hace las imágenes responsivas y elimina espacios extra abajo */
+* { box-sizing: border-box; } /* Evita que el padding y bordes ensanchen las cajas (mantiene el control del tamaño) */
+html, body { margin: 0; padding: 0; min-height: 100vh; } /* Asegura que el diseño ocupe todo el alto de la pantalla */
+img { max-width: 100%; height: auto; display: block; } /* Regla de oro: las imágenes nunca se salen de su contenedor */
 
 :root {
-    /* Paleta de colores para sensibilidad visual */
-    --bg: #0B1220;     /* Fondo base */
-    --layer: #0F172A;  /* Fondo de header y sidebar */
-    --card: #111827;   /* Fondo de tarjetas */
-    --border: #2B3753; /* Color de bordes */
-    --fg: #B6C0DD;     /* Texto principal (gris suave) */
-    --muted: #8E99B5;  /* Texto secundario */
-    --acc: #6D5B97;    /* Acento morado */
-    --acc2: #4A90E2;   /* Acento azul */
+    /* Variables de color: seleccionadas para evitar la fatiga visual */
+    --bg: #0B1220;     
+    --layer: #0F172A;  
+    --card: #111827;   
+    --border: #2B3753; 
+    --fg: #B6C0DD;     /* Texto gris azulado (más suave que el blanco puro) */
+    --muted: #8E99B5;  
+    --acc: #8B5CF6;    /* Morado para el degradado */
+    --acc2: #4A90E2;   /* Azul para el degradado */
 }
 
 body {
     background-color: var(--bg);
-    background-image: linear-gradient(0deg, #030712B3, #030712B3),
-                      linear-gradient(45deg, #1E1B4B 0%, #0F172A 100%); /* Degradado oscuro */
-    background-attachment: fixed; /* Mantiene el fondo estático al hacer scroll */
+    /* Recuperamos el degradado morado-azul con una capa oscura encima para proteger tu vista */
+    background-image: 
+        linear-gradient(0deg, rgba(3, 7, 18, 0.7), rgba(3, 7, 18, 0.7)),
+        linear-gradient(45deg, var(--acc) 0%, var(--acc2) 100%); 
+    background-attachment: fixed; /* El fondo se queda quieto mientras el contenido se mueve */
+    background-size: cover;
     color: var(--fg);
     font-family: system-ui, sans-serif;
     line-height: 1.6;
 }
 
-/* ===== 2) DISEÑO PARA MÓVIL (Por defecto) ===== */
+/* ===== 2) DISEÑO PARA CELULAR (Mobile First) ===== */
 
 .layout {
     display: flex;
-    flex-direction: column; /* Apila contenido verticalmente */
+    flex-direction: column; /* Apila menú y contenido uno arriba del otro */
 }
 
 .header, .sidebar {
@@ -44,47 +47,54 @@ body {
     border-bottom: 1px solid var(--border);
 }
 
+.nav__list {
+    list-style: none; /* Elimina los puntos de la lista que se veían en tu captura */
+    padding: 0;
+    margin-top: 1rem;
+}
+
 .main, .content {
     padding: 1.5rem 1rem;
-    text-align: center; /* Centra el texto en pantallas pequeñas */
+    text-align: center; 
 }
 
 .cards {
     display: grid;
-    /* 1fr asegura que UNA sola caja ocupe todo el ancho disponible */
+    /* CORRECCIÓN: '1fr' asegura que solo haya una caja por fila en celular (más grande y legible) */
     grid-template-columns: 1fr; 
-    gap: 2rem; /* Aumentamos el espacio entre cajas para que no se vea amontonado */
+    gap: 2.5rem; /* Espacio generoso entre tarjetas para no saturar la vista */
     width: 100%;
-    max-width: 500px; /* Evita que la caja sea Gigante en pantallas intermedias */
-    margin: 0 auto;   /* Centra la columna de cajas */
+    max-width: 450px; /* Limita el ancho en celulares grandes para que no se estire demasiado */
+    margin: 0 auto;   /* Centra la columna de tarjetas */
 }
 
 .card {
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: 1rem;
-    padding: 1.5rem; /* Más espacio interno para que el texto respire */
-    width: 100%;     /* La caja ocupa todo el ancho del grid */
-}
-
-.hero-img {
-    width: 90%;
-    margin: 1rem auto;
-    border-radius: 1rem;
+    padding: 1.5rem; 
+    width: 100%;     
+    text-align: left; /* Alineación a la izquierda para facilitar la lectura de reseñas largas */
 }
 
 /* ===== 3) DISEÑO PARA TABLETS (Desde 768px) ===== */
 
 @media (min-width: 768px) {
-    .section__title { font-size: 2rem; }
-
+    /* Aquí permitimos que las cajas se pongan de a dos */
     .cards {
-        grid-template-columns: repeat(2, 1fr); /* Dos columnas de tarjetas */
+        grid-template-columns: repeat(2, 1fr); 
+        max-width: 100%; 
+    }
+
+    .nav__list {
+        display: flex; /* En tablet el menú se vuelve horizontal */
+        justify-content: center;
+        gap: 1.5rem;
     }
 
     .category-grid {
-        display: flex;
-        justify-content: center; /* Centra las cajas de categorías */
+        display: flex; /* Flexbox para las cajas de Videojuegos/Anime del Inicio */
+        justify-content: center; 
         gap: 2rem;
     }
 }
@@ -93,13 +103,13 @@ body {
 
 @media (min-width: 1024px) {
     .layout {
-        flex-direction: row; /* Coloca el menú al lado del contenido */
+        flex-direction: row; /* El menú se mueve al lado izquierdo (Sidebar) */
     }
 
     .sidebar {
         width: 280px;
         height: 100vh;
-        position: sticky; /* Fija el menú lateral al hacer scroll */
+        position: sticky; /* El menú te sigue mientras bajas la página */
         top: 0;
         border-right: 1px solid var(--border);
         border-bottom: none;
@@ -107,49 +117,41 @@ body {
     }
 
     .content {
-        flex: 1; /* Ocupa el espacio restante a la derecha del menú */
+        flex: 1; /* Toma todo el espacio derecho que deja el sidebar */
         padding: 3rem;
         text-align: left;
     }
 
     .cards {
-        grid-template-columns: repeat(3, 1fr); /* Tres columnas de tarjetas */
+        grid-template-columns: repeat(3, 1fr); /* Tres columnas para aprovechar pantallas anchas */
     }
 }
 
 /* ===== 5) ESTILOS DE COMPONENTES ===== */
 
-.card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 1rem;
-    padding: 1.2rem;
-    transition: transform 0.3s ease; /* Suaviza el efecto de movimiento */
-}
-
 .card__img {
     width: 100%;
-    height: 180px; /* Tamaño fijo para orden visual inicial */
-    object-fit: cover; /* Recorta la imagen para llenar el espacio sin deformar */
+    height: 220px; /* Altura uniforme para que el catálogo se vea ordenado */
+    object-fit: cover; /* Corta la imagen para llenar el espacio sin estirarla */
     border-radius: 0.6rem;
-    transition: all 0.4s ease;
+    transition: all 0.4s ease; /* Suaviza el cambio de tamaño al hacer clic */
 }
 
-/* Cambios cuando la tarjeta está abierta vía JavaScript */
+/* Clase activada por JavaScript al hacer clic */
 .card.open .card__img {
-    height: auto; /* Muestra el alto real de la imagen */
-    max-height: 500px;
-    object-fit: contain; /* Muestra la imagen completa sin recortes */
-    background: #000;
+    height: auto; /* Libera la altura fija para mostrar la foto completa */
+    max-height: 550px;
+    object-fit: contain; /* Asegura que se vea toda la imagen sin recortes */
+    background: #000; /* Fondo negro para rellenar si la imagen es vertical */
 }
 
 .card-info { 
-    display: none; /* Oculta la información por defecto */
-    margin-top: 1rem; 
+    display: none; /* Mantiene la descripción oculta inicialmente */
+    margin-top: 1.2rem; 
 }
 
 .card.open .card-info { 
-    display: block; /* Muestra la información al abrir */
+    display: block; /* Muestra la info solo cuando la tarjeta está expandida */
 }
 
 .footer {
@@ -160,10 +162,10 @@ body {
 }
 
 a { 
-    color: #5CB6E5; /* Color azul suave para enlaces */
+    color: #5CB6E5; /* Azul suave para enlaces (no brilla demasiado) */
     text-decoration: none; 
 }
 
 a:hover { 
-    color: #D4AF37; /* Cambia a dorado mate al pasar el cursor */
+    color: #D4AF37; /* Dorado mate para el toque interactivo */
 }
