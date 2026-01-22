@@ -1,158 +1,62 @@
-
+<!-- Hoja ppal -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Videojuegos Sekhmet</title>
-  <meta name="description" content="Reseñas y opiniones personales sobre videojuegos: imágenes, descripciones y enlaces oficiales. Videojuegos Sekhmet." />
+  <title>Videojuegos y Animes Sekhmet</title>
+  <meta name="description" content="Reseñas y opiniones personales sobre videojuegos y animes: imágenes, descripciones y enlaces oficiales. Videojuegos Sekhmet." />
 
   <!-- Hoja de estilos externa -->
   <link rel="stylesheet" href="css/estilos.css" />
 </head>
 
+<!-- cuerpo -->
 <body>
-  <!-- Encabezado del sitio -->
   <header class="header">
-    <h1 class="site-title">Bienvenidos a Videojuegos Sekhmet</h1>
-    <p class="site-intro">
-      En esta página web podrás encontrar videojuegos que he probado, junto con descripciones breves, opiniones personales y enlaces oficiales.
-    </p>
-
-    <!-- Navegación -->
+    <h1 class="site-title">Videojuegos Y Animes Sekhmet</h1>   <!-- titulo pagina -->
     <nav aria-label="Navegación principal">
       <ul class="nav__list">
-        <li><a class="nav__link" href="#inicio">Inicio</a></li>
-        <li><a class="nav__link" href="#destacados">Juegos Destacados</a></li>
+        <li><a class="nav__link" href="index.html">Inicio</a></li>
+        <li><a class="nav__link" href="videojuegos.html">Videojuegos</a></li>
+        <li><a class="nav__link" href="animes.html">Anime</a></li>
         <li><a class="nav__link" href="#contacto">Contacto</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Contenido principal -->
+  <!-- clase main -->
   <main class="main">
-    <!-- Sección Inicio -->
     <section id="inicio" class="section section--intro">
-      <h2 class="section__title">Inicio</h2>
-
-      <p>
-        Bienvenidos a mi página web de videojuegos. Aquí compartiré mis experiencias y opiniones sobre algunos de los juegos que he jugado recientemente.
-      </p>
-
-      <img class="hero-img" src="imagenes/lizz.png" alt="Ilustración de Sekhmet frente a una pantalla de videojuegos" />
-
-      <p><a href="#destacados">Ir a productos destacados</a></p>
+      <h2 class="section__title">Bienvenidos a Sekhmet</h2>
+      <p>Conoce mis experiencias y opiniones sobre el mundo del gaming y el anime.</p>
+      
+      <!-- imagen de portada -->
+      <div class="hero-container">
+            <img class="hero-img" src="imagenes/lizz.png" alt="Ilustración de Sekhmet frente a una pantalla de videojuegos">
+        </div>
     </section>
 
-    <!-- Sección Juegos destacados -->
-    <section id="destacados" class="section section--featured">
-      <h2 class="section__title">Juegos Destacados</h2>
+    <section id="categorias" class="section section--categories">
+      <h2 class="section__title">Explora mi contenido</h2>
+      
+      <div class="category-grid">
+        <article class="category-card">
+          <h3>Videojuegos</h3>
+          <p>Análisis de títulos desafiantes y mis experiencias en cada juego.</p>
+          <a href="videojuegos.html" class="btn-primary">Ver Videojuegos</a>
+        </article>
 
-      <!-- Lista de tarjetas (cards) -->
-      <ul class="cards">
-        <!-- Juego 1 -->
-        <li class="card" id="juego-1">
-          <h3 class="card__title">SilkSong</h3>
-
-          <img
-            class="card__img"
-            src="imagenes/PortadaSilksong.jpg"
-            alt="Portada del videojuego Hollow Knight: SilkSong"
-          />
-
-          <p><strong>Descripción del juego:</strong></p>
-          <p>
-            SilkSong es un juego de aventura y acción en 2D desarrollado por Team Cherry.
-            Es la secuela del aclamado juego Hollow Knight.
-          </p>
-
-          <p><strong>Opinión del juego:</strong></p>
-          <p>
-            SilkSong me ha resultado muy entretenido y desafiante.
-            Es un juego que requiere coordinación y memoria; me ha gustado porque los patrones de los enemigos son variados y originales.
-          </p>
-
-          <a
-            class="card__link"
-            href="https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/"
-            target="_blank" rel="noopener noreferrer"
-          >
-            Más información sobre SilkSong
-          </a>
-        </li>
-
-        <!-- Juego 2 -->
-        <li class="card" id="juego-2">
-          <h3 class="card__title">Dragon Trail</h3>
-
-          <img
-            class="card__img"
-            src="imagenes/PortadaDragonTrail.jpg"
-            alt="Portada del videojuego Dragon Trail"
-          />
-
-          <p><strong>Descripción del juego:</strong></p>
-          <p>
-            Es una vieja leyenda… Un día, la Astroisla se convertirá en un mundo alienígeno,
-            los poderes elementales estallarán y la ruleta del destino girará.
-            Cazadores, seguid las instrucciones del destino y entrad en las turbulencias tiempo‑espaciales.
-            Te invitamos al «Nuevo Mundo» a empezar un viaje totalmente nuevo.
-          </p>
-
-          <p><strong>Opinión del juego:</strong></p>
-          <p>
-            Combina elementos de aventura y acción en un entorno de mundo abierto.
-            Permite jugar con personas de distintos países y conocer nuevas culturas.
-            Los eventos son variados y entretenidos, pero se vuelve algo monótono a veces.
-            Recomiendo descargarlo desde una tienda oficial para evitar problemas de seguridad.
-          </p>
-
-          <a
-            class="card__link"
-            href="https://dt.wattgaming.com/"
-            target="_blank" rel="noopener noreferrer"
-          >
-            Más información sobre Dragon Trail
-          </a>
-        </li>
-
-        <!-- Juego 3 -->
-        <li class="card" id="juego-3">
-          <h3 class="card__title">Pokémon GO</h3>
-
-          <img
-            class="card__img"
-            src="imagenes/PortadaPokemonGO.jpg"
-            alt="Portada del videojuego Pokémon GO"
-          />
-
-          <p><strong>Descripción del juego:</strong></p>
-          <p>
-            Pokémon GO es un juego de realidad aumentada para dispositivos móviles desarrollado por Niantic.
-            Permite capturar, entrenar y combatir con Pokémon en el mundo real usando GPS y cámara.
-          </p>
-
-          <p><strong>Opinión del juego:</strong></p>
-          <p>
-            Desde la actualización de los niveles, es más entretenido jugar; se puede subir más rápido con misiones diarias y eventos.
-            Me gusta salir a caminar y descubrir nuevos lugares mientras busco Pokémon.
-            Es una forma divertida de hacer ejercicio y socializar con otros jugadores.
-          </p>
-
-          <a
-            class="card__link"
-            href="https://pokemongo.com/es"
-            target="_blank" rel="noopener noreferrer"
-          >
-            Más información sobre Pokémon GO
-          </a>
-        </li>
-      </ul>
+        <article class="category-card">
+          <h3>Anime</h3>
+          <p>Reseñas y recomendaciones de mis animes favoritos.</p>
+          <a href="anime.html" class="btn-primary">Ver Animes</a>
+        </article>
+      </div>
     </section>
   </main>
 
-  <!-- Pie de página -->
   <footer id="contacto" class="footer">
     <h2 class="section__title">Contacto</h2>
     <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
