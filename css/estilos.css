@@ -157,9 +157,10 @@ body {
     transition: background 0.3s ease; /* Animación suave para el color */
 }
 
-.btn-primary:hover {
-    background: #7c3aed;         /* Oscurece el violeta al pasar el mouse */
-  color: #5CB6E5 !important;     /* Cambio de color letras al pasar el mouse*/
+a.btn-primary:hover {
+    background: #7c3aed !important; /* Fondo violeta más oscuro */
+    color: #5CB6E5 !important;      /* Letras cambian a azul claro */
+    transform: translateY(-2px);    /* El botón sube un poquito */
 }
 
 /* 5) FOOTER */
