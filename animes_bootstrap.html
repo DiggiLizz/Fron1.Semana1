@@ -3,14 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animes - Sekhmet (Bootstrap)</title>
+    <title>Animes - Sekhmet (Bootstrap Semana 4)</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
-        body { background-color: #0B1220; color: #B6C0DD; }
-        .card { transition: transform 0.3s ease; border-color: #2B3753; background-color: #111827; }
-        .card:hover { transform: translateY(-5px); border-color: #8B5CF6; }
-        .card-img-top { height: 250px; object-fit: cover; }
-        .modal-content { background-color: #111827; color: #B6C0DD; border: 1px solid #8B5CF6; }
+        /* Estilos personalizados para mantener la estética oscura */
+        body { 
+            background-color: #0B1220; 
+            color: #B6C0DD; 
+        }
+        /* Efecto hover en las tarjetas */
+        .card { 
+            transition: transform 0.3s ease; 
+            border-color: #2B3753; 
+            background-color: #111827; 
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: #8B5CF6; 
+        }
+        /* Ajuste de imágenes para que todas midan lo mismo */
+        .card-img-top { 
+            height: 250px; 
+            object-fit: cover; 
+        }
+        /* Estilo para las ventanas emergentes (Modales) */
+        .modal-content { 
+            background-color: #111827; 
+            color: #B6C0DD; 
+            border: 1px solid #8B5CF6; 
+        }
     </style>
 </head>
 <body>
@@ -90,7 +113,7 @@
                 <div class="card h-100 text-light">
                     <img src="imagenes/PortadaDigimon.avif" class="card-img-top" alt="Digimon">
                     <div class="card-body text-center">
-                        <h5 class="card-title text-info">Digimon</h5>
+                        <h5 class="card-title text-info">Digimon Adventure</h5>
                         <button class="btn btn-outline-primary w-100 mt-3" data-bs-toggle="modal" data-bs-target="#modalDigi">Ver Detalles</button>
                     </div>
                 </div>
@@ -108,10 +131,26 @@
                 </div>
                 <div class="modal-body">
                     <h6>Descripción</h6>
-                    <p>En el año 2015 la humanidad intenta recuperarse del «Segundo impacto»...</p>
+                    <p>En el año 2015 la humanidad intenta recuperarse del «Segundo impacto»... [Tu texto original]</p>
                     <h6>Opinión</h6>
-                    <p>Es un anime clásico de los 90s, con robots, ángeles apocalípticos y temas existencialistas.</p>
-                    <a href="https://www.youtube.com/watch?v=_FmUpViWDX4" target="_blank" class="btn btn-primary btn-sm">Ver en YouTube</a>
+                    <p>Es un anime clásico de los 90s con robots y temáticas existencialistas.</p>
+                    <a href="https://www.youtube.com/watch?v=_FmUpViWDX4" target="_blank" class="btn btn-primary btn-sm">Ver Video</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalArrestados" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-info">Están Arrestados</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Descripción</h6>
+                    <p>Natsumi Tsujimoto y Miyuki aprenden a trabajar como un equipo policial... [Tu texto original]</p>
+                    <a href="https://www.youtube.com/watch?v=qsE_DbAjYOw" target="_blank" class="btn btn-primary btn-sm">Ver Video</a>
                 </div>
             </div>
         </div>
