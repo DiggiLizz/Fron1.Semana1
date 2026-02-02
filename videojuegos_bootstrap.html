@@ -3,14 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Videojuegos - Sekhmet (Bootstrap)</title>
+    <title>Videojuegos - Sekhmet (Bootstrap Semana 4)</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <style>
-        body { background-color: #0B1220; color: #B6C0DD; }
-        .card { transition: transform 0.3s ease; border-color: #2B3753; }
-        .card:hover { transform: translateY(-5px); border-color: #8B5CF6; }
-        .card-img-top { height: 200px; object-fit: cover; }
-        .footer { background: rgba(15, 23, 42, 0.9); border-top: 1px solid #2B3753; }
+        /* Estilos base para mantener tu estética oscura */
+        body { 
+            background-color: #0B1220; 
+            color: #B6C0DD; 
+        }
+        /* Tarjetas con el efecto hover */
+        .card { 
+            transition: transform 0.3s ease; 
+            border-color: #2B3753; 
+            background-color: #111827; 
+        }
+        .card:hover { 
+            transform: translateY(-5px); 
+            border-color: #8B5CF6; 
+        }
+        /* Ajuste de imágenes de portada */
+        .card-img-top { 
+            height: 200px; 
+            object-fit: cover; 
+        }
+        /* Estilo para los Modales (ventanas emergentes) */
+        .modal-content { 
+            background-color: #111827; 
+            color: #B6C0DD; 
+            border: 1px solid #8B5CF6; 
+        }
     </style>
 </head>
 <body>
@@ -32,72 +55,66 @@
     </nav>
 
     <main class="container my-5">
-        <h1 class="text-center mb-5">Mis Videojuegos</h1>
+        <h1 class="text-center mb-5 display-4">Galería de Videojuegos</h1>
 
         <div class="row g-4">
             
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark text-light">
+                <div class="card h-100 text-light">
                     <img src="imagenes/PortadaSilksong.jpg" class="card-img-top" alt="Silksong">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5 class="card-title text-info">SilkSong</h5>
-                        <p class="card-text small">Expandiendo el universo de Hollow Knight con mecánicas más rápidas y desafiantes.</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modal1">Leer más</button>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalSilksong">Leer más</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark text-light">
+                <div class="card h-100 text-light">
                     <img src="imagenes/PortadaPokemonGO.jpg" class="card-img-top" alt="Pokémon GO">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5 class="card-title text-info">Pokémon GO</h5>
-                        <p class="card-text small">Realidad aumentada para capturar y combatir en el mundo real.</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modal2">Leer más</button>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalPokemon">Leer más</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark text-light">
+                <div class="card h-100 text-light">
                     <img src="imagenes/PortadaDragonTrail.jpg" class="card-img-top" alt="Dragon Trail">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5 class="card-title text-info">Dragon Trail</h5>
-                        <p class="card-text small">Aventura y acción en un mundo alienígena llamado Astroisla.</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modal3">Leer más</button>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalDragon">Leer más</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark text-light">
+                <div class="card h-100 text-light">
                     <img src="imagenes/PortadaHollow.avif" class="card-img-top" alt="Hollow Knight">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5 class="card-title text-info">Hollow Knight</h5>
-                        <p class="card-text small">El gran metroidvania precuela de Silksong, desafiante y atmosférico.</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modal4">Leer más</button>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalHollow">Leer más</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark text-light">
-                    <img src="imagenes/PortadaKOF.avif" class="card-img-top" alt="KOF">
-                    <div class="card-body">
+                <div class="card h-100 text-light">
+                    <img src="imagenes/PortadaKOF.avif" class="card-img-top" alt="The King of Fighters">
+                    <div class="card-body text-center">
                         <h5 class="card-title text-info">The King of Fighters</h5>
-                        <p class="card-text small">Legendaria saga de lucha por equipos con una historia rica y mística.</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modal5">Leer más</button>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalKof">Leer más</button>
                     </div>
                 </div>
             </div>
 
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="card h-100 bg-dark text-light">
+                <div class="card h-100 text-light">
                     <img src="imagenes/PortadaZelda.jpg" class="card-img-top" alt="Zelda">
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h5 class="card-title text-info">The Legend of Zelda</h5>
-                        <p class="card-text small">Aventuras heroicas en Hyrule, rescatando a la princesa de Ganondorf.</p>
-                        <button class="btn btn-outline-primary btn-sm w-100" data-bs-toggle="modal" data-bs-target="#modal6">Leer más</button>
+                        <button class="btn btn-outline-primary w-100 mt-2" data-bs-toggle="modal" data-bs-target="#modalZelda">Leer más</button>
                     </div>
                 </div>
             </div>
@@ -105,11 +122,44 @@
         </div>
     </main>
 
-    <footer class="footer py-4 mt-5 text-center">
-        <div class="container">
-            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
-            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info">lili.zapata@duocuc.cl</a></p>
+    <div class="modal fade" id="modalSilksong" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-info">Hollow Knight: SilkSong</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Descripción</h6>
+                    <p>Silksong expande el universo de Hollow Knight con una protagonista distinta, Hornet, y mecánicas más rápidas...</p>
+                    <h6>Opinión</h6>
+                    <p>Me ha resultado muy entretenido y desafiante. Requiere coordinación y memoria.</p>
+                    <a href="https://store.steampowered.com/app/1030300/Hollow_Knight_Silksong/" target="_blank" class="btn btn-primary">Ver en Steam</a>
+                </div>
+            </div>
         </div>
+    </div>
+
+    <div class="modal fade" id="modalPokemon" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-info">Pokémon GO</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>Descripción</h6>
+                    <p>Juego de realidad aumentada que permite capturar Pokémon en el mundo real usando GPS.</p>
+                    <h6>Opinión</h6>
+                    <p>Es divertido para caminar y descubrir nuevos lugares. ¡Ten cuidado con los baneos!</p>
+                    <a href="https://pokemongo.com/es" target="_blank" class="btn btn-primary">Sitio Oficial</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-center py-4 border-top border-secondary mt-5">
+        <p>© 2026 Sekhmet Gamer | Semana 4 Bootstrap 5</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
