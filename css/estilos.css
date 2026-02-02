@@ -44,7 +44,7 @@ body {
     padding: 1.5rem;                    /* Espacio interno de 1.5 rem */
     text-align: center;                 /* Centra el texto dentro del menú */
     border-bottom: 1px solid #2B3753;   /* Línea sutil decorativa inferior */
-  transition: all 0.5s ease;            /* transición aquí para que el efecto sea suave */
+    transition: all 0.5s ease;            /* transición aquí para que el efecto sea suave */
 }
 
 /* Efecto para la barra lateral completa */
@@ -122,6 +122,13 @@ body {
     color: #5CB6E5;              /* Color azul claro para los links */
     text-decoration: none;       /* Quita el subrayado */
     font-weight: bold;           /* Letras en negrita */
+    transition: all 0.3s ease; /* Transición para los links */
+}
+
+/* fecto para los enlaces del menú individualmente */
+.nav__list a:hover {
+    color: #8B5CF6;           /* Cambia de azul a violeta */
+    letter-spacing: 1px;      /* Las letras se separan un poquito */
 }
 
 /* ===== COMPONENTES DE LA PÁGINA DE INICIO (INDEX) ===== */
