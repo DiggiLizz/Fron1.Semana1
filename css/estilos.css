@@ -148,7 +148,7 @@ body {
 .btn-primary {
     display: inline-block;       /* Permite aplicar padding y márgenes correctamente */
     background: #8B5CF6;         /* Fondo violeta */
-    color: white !important;     /* Texto blanco forzado */
+    color: #B6C0DD !important;   /* Texto gris forzado */
     padding: 0.8rem 1.5rem;      /* Tamaño del botón */
     border-radius: 0.5rem;       /* Bordes redondeados */
     text-decoration: none;       /* Quita subrayado */
@@ -159,6 +159,7 @@ body {
 
 .btn-primary:hover {
     background: #7c3aed;         /* Oscurece el violeta al pasar el mouse */
+  color: #5CB6E5 !important;     /* Cambio de color letras al pasar el mouse*/
 }
 
 /* 5) FOOTER */
