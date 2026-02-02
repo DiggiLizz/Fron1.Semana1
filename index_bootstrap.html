@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sekhmet - Bootstrap Semana 4</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    
+    <style>
+        /* Ajuste para que las imágenes del carrusel tengan el mismo tamaño */
+        .carousel-item img {
+            height: 500px;
+            object-fit: cover; /* Esto evita que las fotos se deformen */
+        }
+        body {
+            background-color: #0B1220; /* Mantenemos tu color oscuro */
+            color: #B6C0DD;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top border-bottom border-secondary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sekhmet</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="videojuegos.html">Videojuegos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="animes.html">Anime</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="imagenes/lizz.png" class="d-block w-100" alt="Sekhmet Inicio">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Bienvenidos a Sekhmet</h5>
+                    <p>Experiencias en gaming y anime.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="imagenes/lizzCombate.png" class="d-block w-100" alt="Sekhmet Combate">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Zona de Combate</h5>
+                    <p>Análisis de los desafíos más difíciles.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="imagenes/lizzAnine.png" class="d-block w-100" alt="Sekhmet Anime">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Mundo Anime</h5>
+                    <p>Reseñas de mis series favoritas.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </header>
+
+    <main class="container my-5">
+        <h2 class="text-center mb-4">Explora mi contenido</h2>
+        <div class="row g-4">
+            <div class="col-12 col-md-6">
+                <div class="card bg-dark text-light border-secondary h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Videojuegos</h3>
+                        <p class="card-text">Análisis de títulos desafiantes y mis experiencias en cada juego.</p>
+                        <a href="videojuegos.html" class="btn btn-primary">Ver Videojuegos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="card bg-dark text-light border-secondary h-100">
+                    <div class="card-body text-center">
+                        <h3 class="card-title">Anime</h3>
+                        <p class="card-text">Reseñas y recomendaciones de mis animes favoritos.</p>
+                        <a href="animes.html" class="btn btn-primary">Ver Animes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contacto" class="bg-dark text-center py-4 border-top border-secondary">
+        <div class="container">
+            <p>© 2026 Videojuegos <strong>Sekhmet</strong></p>
+            <p>Contacto: <a href="mailto:lili.zapata@duocuc.cl" class="text-info">lili.zapata@duocuc.cl</a></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
